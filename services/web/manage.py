@@ -1,8 +1,11 @@
+import os
 from flask.cli import FlaskGroup
 
-from app import app, db, User
+from project import db, create_app
+from project.tracker.models import User
 
-
+env = os.environ.get('FLASK_ENV', 'development')
+app = create_app('project.config.%sConfig' % env.capitalize())
 cli = FlaskGroup(app)
 
 

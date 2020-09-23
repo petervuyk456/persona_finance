@@ -14,3 +14,5 @@ Production
 - Implements [Docker](https://mherman.org/presentations/dockercon-2018/#74) multi-stage build to reduce production image size by using a builder to build Python wheels and then copying over into final production image
 
 Base build originally inspired by [Michael Herman's Dockerizing Flask with Postgres, Gunicorn, and Nginx](https://github.com/testdrivenio/flask-on-docker) blog post on [testdriven.io](https://testdriven.io/blog/dockerizing-flask-with-postgres-gunicorn-and-nginx/#docker)
+
+# Currently working on ./services/web/app/**init**.py to create home page

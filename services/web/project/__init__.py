@@ -36,10 +36,10 @@ def create_app(object_name):
     def staticfiles(filename):
         return send_from_directory(app.config["STATIC FOLDER"], filename)
 
-    from project.main import main_blueprint
+    from project.home import home_blueprint
     from project.tracker import tracker_blueprint
 
-    app.register_blueprint(main_blueprint)
+    app.register_blueprint(home_blueprint)
     app.register_blueprint(tracker_blueprint)
 
     app.register_error_handler(404, page_not_found)

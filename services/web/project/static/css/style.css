@@ -21,6 +21,11 @@ p {
   font-size: 20px;
 }
 
+#logo {
+  width: 20%;
+  height: auto;
+}
+
 #navbar {
   background-color: var(--black);
   color: var(--dwhite);

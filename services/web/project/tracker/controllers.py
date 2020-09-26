@@ -7,6 +7,10 @@ tracker_blueprint = Blueprint(
     url_prefix="/tracker"
 )
 
+ACTIVE_USERS = []
+MONTHS = 5
+PAGE_NUMBER = 1
+
 
 @tracker_blueprint.route('/')
 def index():

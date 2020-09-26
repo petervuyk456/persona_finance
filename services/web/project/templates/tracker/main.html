@@ -5,7 +5,8 @@
   <div class="col-lg-3">
     <div class="card">
       <button
-        class="btn btn-primary"
+        id="button_main"
+        class="btn"
         type="button"
         data-toggle="collapse"
         data-target="#collapseEdit"
@@ -15,12 +16,46 @@
         Edit
       </button>
       <div class="collapse" id="collapseEdit">
-        <div class="card card-body">Edit options here</div>
+        <div class="card card-body">
+          <button 
+            id="button_sub" 
+            class="btn"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseAddUser"
+            aria-expanded="false"
+            aria-controls="collapseAddUser"
+          >
+            Add User
+          </button>
+          <div class="collapse" id="collapseAddUser">
+            <div class="card card-body">
+             
+            </div>
+          </div>
+          <button 
+            id="button_sub" 
+            class="btn"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseAddCategory"
+            aria-expanded="false"
+            aria-controls="collapseAddCategory"
+          >
+            Add Category
+          </button>
+          <div class="collapse" id="collapseAddCategory">
+            <div class="card card-body">
+             
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card">
       <button
-        class="btn btn-primary"
+        id="button_main"
+        class="btn
         type="button"
         data-toggle="collapse"
         data-target="#collapseView"
@@ -35,7 +70,8 @@
     </div>
     <div class="card">
       <button
-        class="btn btn-primary"
+        id="button_main"
+        class="btn"
         type="button"
         data-toggle="collapse"
         data-target="#collapseAnalysis"

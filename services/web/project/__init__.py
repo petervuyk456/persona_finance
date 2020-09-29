@@ -1,24 +1,9 @@
-from flask import Flask, render_template, jsonify, send_from_directory
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_assets import Bundle, Environment
+import os
+from flask import Flask
+from flask import render_template, jsonify, send_from_directory
+from flask_mongoengine import MongoEngine
 
-db = SQLAlchemy()
-migrate = Migrate()
-assets_env = Environment()
-
-main_css = Bundle(
-    'css/bootstrap.css',
-    filters='cssmin',
-    output='css/common.css'
-)
-
-main_js = Bundle(
-    'js/jquery.js',
-    'js/bootstrap.js',
-    filters='jsmin',
-    output='js/common.js'
-)
+db = MongoEngine()
 
 
 def page_not_found(e):
@@ -29,8 +14,8 @@ def create_app(object_name):
 
     app = Flask(__name__)
     app.config.from_object(object_name)
+
     db.init_app(app)
-    migrate.init_app(app, db)
 
     @app.route('/static/<path:filename>')
     def staticfiles(filename):

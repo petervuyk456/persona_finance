@@ -1,36 +1,50 @@
-import datetime
 from project import db
-
-accounts = db.Table('accounts',
-                    db.Column('user_id', db.Integer, db.ForeignKey(
-                        'user.id'), primary_key=True),
-                    db.Column('account_id', db.Integer, db.ForeignKey(
-                        'account.id'), primary_key=True)
-                    )
+from project.constants import ROLES, ACCT_TYPES, CF_TYPES
+import datetime
+from flask_mongoengine import ValidationError
 
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True, nullable=False)
-    role = db.Column(db.String(64), nullable=False, default="user")
-    created_date = db.Column(db.DateTime(), default=datetime.datetime.now)
-    accounts = db.relationship('Account', secondary=accounts, lazy='subquery',
-                               backref=db.backref('users', lazy=True))
-
-    def __init__(self, username, role="user"):
-        self.username = username
-        self.role = role
-
-    def __repr__(self):
-        return "<User '{}'>".format(self.username)
+acc_types = (t[0] for t in ACCT_TYPES)
+cf_types = (t[0] for t in CF_TYPES)
 
 
-class Account(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True, nullable=False)
-    acct_type = db.Column(db.String(24), nullable=False)
-    history = db.Column(db.PickleType())
+def _not_empty(val):
+    if not val:
+        raise ValidationError('value can not be empty')
 
-    def __init__(self, name, acct_type):
-        self.name = name
-        self.acct_type = acct_type
+
+class Entry(db.EmbeddedDocument):
+    value = db.FloatField(min_value=0)
+    entry_date = db.DateTimeField(default=datetime.datetime.utcnow)
+    modified_date = db.DateTimeField(default=datetime.datetime.utcnow)
+
+
+class Account(db.EmbeddedDocument):
+    name = db.StringField(maxlength=64,
+                          validation=_not_empty)
+    acct_type = db.StringField(maxlength=24,
+                               validation=_not_empty,
+                               choices=acc_types)
+    history = db.ListField(db.EmbeddedDocumentField(Entry))
+
+
+class CashFlow(db.EmbeddedDocument):
+    name = db.StringField(maxlength=64,
+                          validation=_not_empty)
+    acct_type = db.StringField(maxlength=24,
+                               validation=_not_empty,
+                               choices=acc_types)
+    history = db.ListField(db.EmbeddedDocumentField(Entry))
+
+
+class User(db.Document):
+    username = db.StringField(max_length=64,
+                              unique=True,
+                              validation=_not_empty)
+    role = db.StringField(max_length=64,
+                          validation=_not_empty,
+                          default="user",
+                          choices=ROLES)
+    created_date = db.DateTimeField(default=datetime.datetime.utcnow)
+    worth = db.ListField(db.EmbeddedDocumentField(Account))
+    cash_flows = db.ListField(db.EmbeddedDocumentField(CashFlow))

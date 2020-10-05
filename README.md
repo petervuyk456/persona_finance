@@ -15,4 +15,4 @@ Production
 
 Base build originally inspired by [Michael Herman's Dockerizing Flask with Postgres, Gunicorn, and Nginx](https://github.com/testdrivenio/flask-on-docker) blog post on [testdriven.io](https://testdriven.io/blog/dockerizing-flask-with-postgres-gunicorn-and-nginx/#docker)
 
-# Currently working on ./services/web/app/**init**.py to create home page
+# Currently working on user authentication - try getting rid of UserQuerySet and use this resource: https://stackoverflow.com/questions/54992412/flask-login-usermixin-class-with-a-mongodb

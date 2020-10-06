@@ -1,0 +1,27 @@
+{% macro generate_cf_table(user, both=True, months=all, friends=all) %}
+<table class="table table-striped table-dark table-hover table-sm">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Category</th>
+      <th scope="col">Peter</th>
+      <th scope="col">Ali</th>
+      {% if both %}
+      <th scope="col">Both</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in user.cash_flows %}
+    <tr>
+      <th scope="row">1</th>
+      <td>$ -</td>
+      <td>$ -</td>
+      {% if both %}
+      <td>$ -</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endmacro %}

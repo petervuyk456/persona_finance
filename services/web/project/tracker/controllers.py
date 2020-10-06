@@ -1,4 +1,7 @@
 from flask import Blueprint, render_template
+from flask_login import current_user, login_required
+
+from project import logger
 
 tracker_blueprint = Blueprint(
     'tracker',
@@ -13,5 +16,6 @@ PAGE_NUMBER = 1
 
 
 @tracker_blueprint.route('/')
+@login_required
 def index():
-    return render_template('tracker/main.html')
+    return render_template('tracker/main.html', user=current_user)

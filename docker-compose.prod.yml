@@ -1,10 +1,23 @@
 version: "3.7"
 
 services:
+  redis:
+    env_file: ./environments/.prod.env
+    image: redis:5.0.4-stretch
+    stop_grace_period: -3s
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+      - ./redis.conf:/redis.conf
+    command: ["redis-server", "/redis.conf"]
+
   web:
     build:
       context: ./services/web
       dockerfile: Dockerfile.prod
+    depends_on:
+      - redis
     command: gunicorn --bind 0.0.0.0:5000 manage:app
     volumes:
       - static_volume:/home/app/web/project/static
@@ -15,3 +28,4 @@ services:
 
 volumes:
   static_volume:
+  redis:

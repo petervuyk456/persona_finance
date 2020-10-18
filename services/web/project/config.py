@@ -1,12 +1,17 @@
 import os
+import redis
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
     MONGODB_HOST = os.getenv("DATABASE_URL")
+    SESSION_REDIS = redis.from_url(os.getenv('SESSION_REDIS'))
+    SESSION_TYPE = 'redis'
+
     STATIC_FOLDER = f'{os.getenv("APP_FOLDER")}/project/static'
     SEND_FILE_MAX_AGE_DEFAULT = 10
+
     SECRET_KEY = os.getenv("SECRET_KEY")
     WTF_CSRF_SECRET_KEY = os.getenv('WTF_CSRF_SECRET_KEY')
 

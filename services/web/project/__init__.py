@@ -1,5 +1,6 @@
 import os
 import sys
+import redis
 import logging
 from logging.config import dictConfig
 from flask import Flask
@@ -7,9 +8,9 @@ from flask import render_template, jsonify, send_from_directory
 from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
 
-
 db = MongoEngine()
 login_mgr = LoginManager()
+r = redis.Redis(host='redis', port=6379)
 
 dictConfig({
     'version': 1,

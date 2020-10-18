@@ -11,11 +11,13 @@ auth_blueprint = Blueprint(
     url_prefix='/auth'
 )
 
+home_url = 'home.index'
+
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home.index'))
+        return redirect(url_for(home_url))
 
     form = LoginForm()
 
@@ -24,7 +26,7 @@ def login():
         login_user(user, remember=form.remember.data)
 
         flash(f"Welcome {form.username.data}!", category="success")
-        return redirect(url_for('home.index'))
+        return redirect(url_for(home_url))
 
     return render_template('auth/login.html', form=form)
 
@@ -33,7 +35,7 @@ def login():
 def logout():
     logout_user()
     flash("You have been logged out. Come back soon!", category="success")
-    return redirect(url_for('home.index'))
+    return redirect(url_for(home_url))
 
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])

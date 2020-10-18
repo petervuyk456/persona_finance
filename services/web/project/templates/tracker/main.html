@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block title %}PersonaFi ~ Tracker{% endblock %} {%
-import 'tracker/macros.html' as macros %} {%block body %}
+{% extends "base.html" %} 
+{% block title %}PersonaFi ~ Tracker{% endblock %} 
+{% import 'tracker/macros.html' as macros %} 
+{%block body %}
 <h1>Personal Finance Tracker</h1>
 <div class="row">
   <div class="col-xl-3">
@@ -31,6 +33,7 @@ import 'tracker/macros.html' as macros %} {%block body %}
           <div class="collapse" id="collapseAddUser">
             <div class="card card-body"></div>
           </div>
+          <hr>
           <button
             id="button_sub"
             class="btn"
@@ -61,7 +64,15 @@ import 'tracker/macros.html' as macros %} {%block body %}
         View
       </button>
       <div class="collapse" id="collapseView">
-        <div class="card card-body">View options here</div>
+        <div class="card card-body">
+          <button id="button_cf" class="btn" type="button">
+            Cash Flow
+          </button>
+          <hr>
+          <button id="button_worth" class="btn" type="button">
+            Net Worth
+          </button>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -82,7 +93,7 @@ import 'tracker/macros.html' as macros %} {%block body %}
     </div>
   </div>
   <div class="col-xl-9">
-    {{ macros.generate_cf_table(user, friends=user.active_peek) }}
+    {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
   </div>
 </div>
 {% endblock %}

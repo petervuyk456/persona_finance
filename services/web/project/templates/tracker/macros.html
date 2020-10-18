@@ -1,27 +1,27 @@
-{% macro generate_cf_table(user, both=True, months=all, friends=all) %}
-<table class="table table-striped table-dark table-hover table-sm">
+{% macro generate_worth_table(user, worth, both=False, date_start=None, date_end=None, friends=all) %}
+<h3>Cash Flow for user {{ user.username }} </h3>
+<div id="tablediv" class="table-responsive-md">
+<table class="table table-striped table-hover table-dark table-sm">
   <thead>
     <tr class="text-center">
       <th scope="col">Category</th>
-      <th scope="col">Peter</th>
-      <th scope="col">Ali</th>
-      {% if both %}
-      <th scope="col">Both</th>
-      {% endif %}
+      {% for col in worth.columns %}
+      <th scope="col">{{ col }}</th>
+      {% endfor %}
     </tr>
   </thead>
   <tbody>
-    {% for row in user.cash_flows %}
+    {% for i in range(worth.shape[0]) %}
     <tr>
-      <th scope="row">1</th>
-      <td>$ -</td>
-      <td>$ -</td>
-      {% if both %}
-      <td>$ -</td>
-      {% endif %}
+      <th scope="col">{{ user.worth[i].name }}</th>
+      <th scope="col">{{ user.worth[i].acct_type }}</th>
+      {% for col in worth.columns[:-1] %}
+      <th scope="col">{{ worth.iloc[i][col]|round|int }}</th>
+      {% endfor %}
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>
 
 {% endmacro %}

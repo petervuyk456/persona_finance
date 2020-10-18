@@ -12,11 +12,13 @@ cli = FlaskGroup(app)
 @cli.command('create_db')
 def create_db():
     reset_db()
+    # pass
 
 
 @cli.command('seed_db')
 def seed_db():
     generate_td()
+    # pass
 
 
 if __name__ == "__main__":

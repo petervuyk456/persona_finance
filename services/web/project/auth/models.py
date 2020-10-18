@@ -28,12 +28,14 @@ class User(UserMixin, db.Document):
     # Friends
     active_share = db.ListField(db.ReferenceField('self'))
     active_peek = db.ListField(db.ReferenceField('self'))
+    temp_user = db.ListField(db.ReferenceField('self'))
 
     # PersonalFi Tracker
     worth = db.ListField(db.EmbeddedDocumentField(Account))
     cash_flows = db.ListField(db.EmbeddedDocumentField(CashFlow))
 
     # Meta Data
+    last_login = db.DateTimeField()
     created_date = db.DateTimeField(default=datetime.datetime.utcnow)
 
     def __init__(self, username, role=ROLES[0], *args, **kwargs):

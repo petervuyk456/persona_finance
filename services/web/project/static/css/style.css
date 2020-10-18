@@ -21,6 +21,18 @@ p {
   font-size: 20px;
 }
 
+table {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+#tablediv {
+  height: 50px;
+}
+
 #logo {
   width: 20%;
   height: auto;

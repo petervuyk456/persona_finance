@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template
 from flask_login import current_user, login_required
-
+from project.utils import account_list_to_df
 from project import logger
+from datetime import datetime
 
 tracker_blueprint = Blueprint(
     'tracker',
@@ -18,4 +19,12 @@ PAGE_NUMBER = 1
 @tracker_blueprint.route('/')
 @login_required
 def index():
-    return render_template('tracker/main.html', user=current_user)
+    user = current_user
+    worth = account_list_to_df(user.worth)
+    cash_flow = account_list_to_df(user.cash_flows)
+    logger.info(worth.columns)
+    logger.info(cash_flow)
+    return render_template('tracker/main.html',
+                           user=user,
+                           worth=worth,
+                           cash_flow=cash_flow)

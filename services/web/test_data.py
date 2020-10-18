@@ -10,6 +10,9 @@ def generate_td():
     user1.set_password('1234561')
     user2.set_password('abcd1234')
     admin1.save()
+    history = [Entry(value=val) for val in range(10000, 17000, 1000)]
+    account = Account(name='401k', acct_type='asset', history=history)
+    user1.worth.append(account)
     user1.save()
     user2.save()
 

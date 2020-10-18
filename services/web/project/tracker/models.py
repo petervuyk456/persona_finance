@@ -3,9 +3,6 @@ from project.constants import ACCT_TYPES, CF_TYPES
 from project.utils import _not_empty
 import datetime
 
-acc_types = (t[0] for t in ACCT_TYPES)
-cf_types = (t[0] for t in CF_TYPES)
-
 
 class Entry(db.EmbeddedDocument):
     value = db.FloatField(min_value=0)
@@ -18,7 +15,7 @@ class Account(db.EmbeddedDocument):
                           validation=_not_empty)
     acct_type = db.StringField(maxlength=24,
                                validation=_not_empty,
-                               choices=acc_types)
+                               choices=ACCT_TYPES.keys())
     history = db.ListField(db.EmbeddedDocumentField(Entry))
 
 
@@ -27,5 +24,5 @@ class CashFlow(db.EmbeddedDocument):
                           validation=_not_empty)
     acct_type = db.StringField(maxlength=24,
                                validation=_not_empty,
-                               choices=acc_types)
+                               choices=CF_TYPES.keys())
     history = db.ListField(db.EmbeddedDocumentField(Entry))

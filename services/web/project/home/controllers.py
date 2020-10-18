@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, session
+from flask import Blueprint, render_template, jsonify
 from project import r
 
 home_blueprint = Blueprint(

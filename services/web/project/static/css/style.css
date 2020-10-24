@@ -1,3 +1,4 @@
+/* Variables */
 :root {
   --red: #bd5b56;
   --dblue: #475699;
@@ -6,6 +7,7 @@
   --dwhite: white;
 }
 
+/* Primary */
 body {
   background-color: var(--dwhite);
   color: var(--black);
@@ -21,12 +23,18 @@ p {
   font-size: 20px;
 }
 
+/* Tables */
 table {
-  display: block;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-  margin: 0 auto;
-  overflow: auto;
+  table-layout: table;
+  border-collapse: auto;
+  border: 3px solid purple;
+  font-family: 'verdana', Courier, monospace;
+  font-size: 10px;
+}
+
+th,
+td {
+  padding: 20px;
 }
 
 #tablediv {
@@ -79,6 +87,7 @@ table {
   height: 60px; /* Height of the footer */
 }
 
+/* Pagination */
 .pagination > li > a {
   background-color: var(--white);
   color: var(--black);

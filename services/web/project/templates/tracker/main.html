@@ -2,98 +2,98 @@
 {% block title %}PersonaFi ~ Tracker{% endblock %} 
 {% import 'tracker/macros.html' as macros %} 
 {%block body %}
-<h1>Personal Finance Tracker</h1>
-<div class="row">
-  <div class="col-xl-3">
-    <div class="card">
-      <button
-        id="button_main"
-        class="btn"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapseEdit"
-        aria-expanded="false"
-        aria-controls="collapseEdit"
-      >
-        Edit
-      </button>
-      <div class="collapse" id="collapseEdit">
-        <div class="card card-body">
-          <button
-            id="button_sub"
-            class="btn"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseAddUser"
-            aria-expanded="false"
-            aria-controls="collapseAddUser"
-          >
-            Add User
-          </button>
-          <div class="collapse" id="collapseAddUser">
-            <div class="card card-body"></div>
-          </div>
-          <hr>
-          <button
-            id="button_sub"
-            class="btn"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseAddCategory"
-            aria-expanded="false"
-            aria-controls="collapseAddCategory"
-          >
-            Add Category
-          </button>
-          <div class="collapse" id="collapseAddCategory">
-            <div class="card card-body"></div>
+  <h1>Personal Finance Tracker</h1>
+  <div class="row">
+    <div class="col-xl-3">
+      <div class="card">
+        <button
+          id="button_main"
+          class="btn"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseEdit"
+          aria-expanded="false"
+          aria-controls="collapseEdit"
+        >
+          Edit
+        </button>
+        <div class="collapse" id="collapseEdit">
+          <div class="card card-body">
+            <button
+              id="button_sub"
+              class="btn"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseAddUser"
+              aria-expanded="false"
+              aria-controls="collapseAddUser"
+            >
+              Add User
+            </button>
+            <div class="collapse" id="collapseAddUser">
+              <div class="card card-body"></div>
+            </div>
+            <hr>
+            <button
+              id="button_sub"
+              class="btn"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseAddCategory"
+              aria-expanded="false"
+              aria-controls="collapseAddCategory"
+            >
+              Add Category
+            </button>
+            <div class="collapse" id="collapseAddCategory">
+              <div class="card card-body"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <button
-        id="button_main"
-        class="btn"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapseView"
-        aria-expanded="false"
-        aria-controls="collapseView"
-      >
-        View
-      </button>
-      <div class="collapse" id="collapseView">
-        <div class="card card-body">
-          <button id="button_cf" class="btn" type="button">
-            Cash Flow
-          </button>
-          <hr>
-          <button id="button_worth" class="btn" type="button">
-            Net Worth
-          </button>
+      <div class="card">
+        <button
+          id="button_main"
+          class="btn"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseView"
+          aria-expanded="false"
+          aria-controls="collapseView"
+        >
+          View
+        </button>
+        <div class="collapse" id="collapseView">
+          <div class="card card-body">
+            <button id="button_cf" class="btn" type="button">
+              Cash Flow
+            </button>
+            <hr>
+            <button id="button_worth" class="btn" type="button">
+              Net Worth
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <button
+          id="button_main"
+          class="btn"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseAnalysis"
+          aria-expanded="false"
+          aria-controls="collapseAnalysis"
+        >
+          Analysis
+        </button>
+        <div class="collapse" id="collapseAnalysis">
+          <div class="card card-body">Analysis options here</div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <button
-        id="button_main"
-        class="btn"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapseAnalysis"
-        aria-expanded="false"
-        aria-controls="collapseAnalysis"
-      >
-        Analysis
-      </button>
-      <div class="collapse" id="collapseAnalysis">
-        <div class="card card-body">Analysis options here</div>
-      </div>
+    <div class="col-xl-9">
+      {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
     </div>
   </div>
-  <div class="col-xl-9">
-    {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
-  </div>
-</div>
 {% endblock %}

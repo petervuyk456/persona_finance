@@ -1,99 +1,50 @@
 {% extends "base.html" %} 
 {% block title %}PersonaFi ~ Tracker{% endblock %} 
 {% import 'tracker/macros.html' as macros %} 
-{%block body %}
-  <h1>Personal Finance Tracker</h1>
-  <div class="row">
-    <div class="col-xl-3">
-      <div class="card">
-        <button
-          id="button_main"
-          class="btn"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseEdit"
-          aria-expanded="false"
-          aria-controls="collapseEdit"
-        >
-          Edit
-        </button>
-        <div class="collapse" id="collapseEdit">
-          <div class="card card-body">
-            <button
-              id="button_sub"
-              class="btn"
-              type="button"
-              data-toggle="collapse"
-              data-target="#collapseAddUser"
-              aria-expanded="false"
-              aria-controls="collapseAddUser"
-            >
-              Add User
-            </button>
-            <div class="collapse" id="collapseAddUser">
-              <div class="card card-body"></div>
-            </div>
-            <hr>
-            <button
-              id="button_sub"
-              class="btn"
-              type="button"
-              data-toggle="collapse"
-              data-target="#collapseAddCategory"
-              aria-expanded="false"
-              aria-controls="collapseAddCategory"
-            >
-              Add Category
-            </button>
-            <div class="collapse" id="collapseAddCategory">
-              <div class="card card-body"></div>
-            </div>
-          </div>
+{% block body %}
+<div class="text-center">
+<h2>Personal Finance Tracker</h2>
+</div>
+<div class="row">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    Edit
+  </button>
+  <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    View
+  </button>
+  <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    Analysis
+  </button>
+
+  <!-- Full Height Modal Right -->
+  <div class="modal fade left" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+
+    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-full-height modal-left" role="document">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
-      <div class="card">
-        <button
-          id="button_main"
-          class="btn"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseView"
-          aria-expanded="false"
-          aria-controls="collapseView"
-        >
-          View
-        </button>
-        <div class="collapse" id="collapseView">
-          <div class="card card-body">
-            <button id="button_cf" class="btn" type="button">
-              Cash Flow
-            </button>
-            <hr>
-            <button id="button_worth" class="btn" type="button">
-              Net Worth
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <button
-          id="button_main"
-          class="btn"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseAnalysis"
-          aria-expanded="false"
-          aria-controls="collapseAnalysis"
-        >
-          Analysis
-        </button>
-        <div class="collapse" id="collapseAnalysis">
-          <div class="card card-body">Analysis options here</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-9">
-      {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
     </div>
   </div>
+  <!-- Full Height Modal Right -->
+  <div class="col-xl-12">
+    {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
+  </div>
+</div>
 {% endblock %}

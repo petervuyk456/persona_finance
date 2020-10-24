@@ -38,6 +38,8 @@ class User(UserMixin, db.Document):
     last_login = db.DateTimeField()
     created_date = db.DateTimeField(default=datetime.datetime.utcnow)
 
+    meta = {}
+
     def __init__(self, username, role=ROLES[0], *args, **kwargs):
         super(db.Document, self).__init__(*args, **kwargs)
         self.username = username
@@ -84,3 +86,4 @@ class User(UserMixin, db.Document):
             return False
         else:
             return bcrypt.check_password_hash(self.password.encode('utf-8'), password)
+    

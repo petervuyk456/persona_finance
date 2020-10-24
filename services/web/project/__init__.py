@@ -27,6 +27,7 @@ dictConfig({
         'handlers': ['wsgi']
     }
 })
+
 logger = logging.getLogger(__name__)
 
 

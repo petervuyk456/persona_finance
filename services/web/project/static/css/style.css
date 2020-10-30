@@ -23,22 +23,24 @@ p {
   font-size: 20px;
 }
 
+
 /* Tables */
 table {
   table-layout: table;
   border-collapse: auto;
-  border: 3px solid purple;
   font-family: 'verdana', Courier, monospace;
-  font-size: 10px;
+  font-size: 8px;
 }
 
 .tracker-table-wrapper {
-  height: 800px;
+  height: 1200px;
   overflow-y: auto;
 }
 
-#tracker-table th, td {
+
+#tracker-table th, td, tr {
   white-space: nowrap;
+  line-height:7px;
 }
 
 table.dataTable thead .sorting:after,
@@ -52,6 +54,11 @@ table.dataTable thead .sorting_desc:before,
 table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
 bottom: .5em;
+}
+
+.btn-sml { 
+  height: 4vh; 
+  width: fit-content;
 }
 
 #logo {
@@ -124,4 +131,8 @@ bottom: .5em;
 .pagination > .active > a:hover {
   background-color: var(--black) !important;
   border: solid 1px var(--black);
+}
+
+#logo {
+  padding-left: 10px;
 }

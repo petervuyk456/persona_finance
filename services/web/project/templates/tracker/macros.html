@@ -1,26 +1,39 @@
 {% macro generate_worth_table(user, worth, both=False, date_start=None, date_end=None, friends=all) %}
 <hr>
 <div class="text-center">
-  <h3>Cash Flow & Net Worth</h3>
+  <h3>Net Worth</h3>
 </div>
 <hr>
 <div class="tracker-table-wrapper">
 <table id="tracker-table" class="table table-striped table-bordered table-sm">
   <thead>
     <tr class="text-center">
-      <th class="th-sm">Category</th>
+      <th class="th-sm align-middle"></th>
+      <th class="th-sm align-middle">Category</th>
       {% for col in worth.columns %}
-      <th class="th-sm">{{ col }}</th>
+      <th class="th-sm align-middle">{{ col }}</th>
       {% endfor %}
     </tr>
   </thead>
   <tbody>
     {% for i in range(worth.shape[0]) %}
     <tr>
-      <th class="th-sm">{{ user.worth[i].name }}</th>
-      <th class="th-sm">{{ user.worth[i].acct_type }}</th>
+      <th class="th-sm align-middle">
+        <div class="text-center" style="padding: -3px;">
+          <div class="btn-group btn-group-sm" role="group" aria-label="entry option buttons">
+            <button type="button" class="btn btn-outline-primary" style="padding: 0 10px;">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger" style="padding: 0 10px;">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </th>
+      <th class="th-sm align-middle">{{ user.worth[i].name }}</th>
+      <th class="th-sm align-middle">{{ user.worth[i].acct_type }}</th>
       {% for col in worth.columns[:-1] %}
-      <th class="th-sm">{{ worth.iloc[i][col]|round|int }}</th>
+      <th class="th-sm align-middle">{{ worth.iloc[i][col]|round|int }}</th>
       {% endfor %}
     </tr>
     {% endfor %}

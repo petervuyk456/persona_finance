@@ -1,7 +1,15 @@
-$(document).ready(function () {
-    $('#tracker-table').DataTable({
-    "scrollX": true,
-    "scrollY": 400,
+$(document).ready(() => {
+    $('#tracker-table').dataTable({
+        scrollX: true,
+        scrollY: 400,
+        columnDefs: [{
+          orderable: false,
+          className: 'select-checkbox select-checkbox-all',
+          targets: 0
+        }],
+        select: {
+          style: 'multi',
+          selector: 'td:first-child'
+        }
     });
-    $('.dataTables_length').addClass('bs-select');
-    });
+});

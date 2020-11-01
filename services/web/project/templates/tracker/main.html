@@ -13,44 +13,83 @@
   </div>
   <div class="col-lg-5" style="padding: 0;">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#EditModalLeft">
       Edit
     </button>
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#ViewModalLeft">
       View
     </button>
-    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#fullHeightModalRight">
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#AnalysisModalLeft">
       Analysis
     </button>
   </div>
 </div>
-<div class="row">
-  <!-- Full Height Modal Right -->
-  <div class="modal fade left" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-
-    <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
-    <div class="modal-dialog modal-full-height modal-left" role="document">
-
-
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+ <!-- Full Height Modal Right -->
+<div class="modal fade left" id="EditModalLeft" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true">
+ <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-full-height modal-left" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Edit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save</button>
       </div>
     </div>
   </div>
-  <!-- Full Height Modal Right -->
+</div>
+<div class="modal fade left" id="ViewModalLeft" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true">
+ <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-full-height modal-left" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">View</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade left" id="AnalysisModalLeft" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+ aria-hidden="true">
+ <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-full-height modal-left" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Analysis</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Full Height Modal Right -->
+<div class="row">
   <div class="col-xl-12">
     {{ macros.generate_worth_table(user, worth, friends=user.active_peek) }}
   </div>
